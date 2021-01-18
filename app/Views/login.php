@@ -20,17 +20,25 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 			    <img class="wrap-login100-img p-t-10" src="<?php echo base_url().'/Assets/login/images/nglogin.png'; ?>">
-				<form class="login100-form validate-form p-l-55 p-r-55 p-t-25">
+				<form class="login100-form validate-form p-l-55 p-r-55 p-t-25" action = "Auth/login" method ="POST">
+
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
 						<input class="input100" type="text" name="username" placeholder="Username">
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 					</div>
-					<div id="errorBox" hidden>
-                        <div class="err-validate" id="message"></div>
+
+					<div id="errorBox">
+						<?php if (session()->getFlashdata('msg')) : 
+						?>
+                        <div class="err-validate" id="message"><?= session()->getFlashdata('msg');?></div>
+						<?php
+						endif;
+						?>
+						
                     </div>
 					<div class="container-login100-form-btn p-b-30 p-t-55">
 						<button class="login100-form-btn">
