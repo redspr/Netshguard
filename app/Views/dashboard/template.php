@@ -39,7 +39,7 @@
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
-                    <a class="logo" href="index">
+                    <a class="logo" href="<?php echo base_url('home/dashboard'); ?>">
                         <!-- Logo icon image, you can use font-icon also --><b>
                             <!--This is light logo icon--><img src="<?php echo base_url().'/Assets/home/plugins/images/nglogin.png'; ?>" alt="home"
                                 class="light-logo" width="219" />
@@ -71,24 +71,24 @@
                 <ul class="nav" id="side-menu">
                     
                     <li style="padding: 70px 0 0;">
-                        <a href="/" class="waves-effect"><i class="fa fa-home fa-fw"
-                                aria-hidden="true"></i>Dashboard</a>
+                        <a href="<?php echo base_url('home/dashboard'); ?>" class="waves-effect"><i class="fa fa-home fa-fw"
+                                aria-hidden="true"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="/protection" class="waves-effect"><i class="fa fa-gear fa-fw"
-                                aria-hidden="true"></i>Protection Settings</a>
+                        <a href="<?php echo base_url('home/protection'); ?>" class="waves-effect"><i class="fa fa-gear fa-fw"
+                                aria-hidden="true"></i> Protection Settings</a>
                     </li>
                     <li>
-                        <a href="home/blacklist" class="waves-effect"><i class="fa fa-ban fa-fw"
-                                aria-hidden="true"></i>Blacklist</a>
+                        <a href="<?php echo base_url('home/blacklist'); ?>" class="waves-effect"><i class="fa fa-ban fa-fw"
+                                aria-hidden="true"></i> Blacklist</a>
                     </li>
                     <li>
-                        <a href="home/logs" class="waves-effect"><i class="fa fa-pencil-square fa-fw"
-                                aria-hidden="true"></i>Attack Logs</a>
+                        <a href="<?php echo base_url('home/logs'); ?>" class="waves-effect"><i class="fa fa-pencil-square fa-fw"
+                                aria-hidden="true"></i> Attack Logs</a>
                     </li>
                     <li>
-                        <a href="home/chatbot" class="waves-effect"><i class="fa fa-bell fa-fw"
-                                aria-hidden="true"></i>Chatbot Notification</a>
+                        <a href="<?php echo base_url('home/chatbot'); ?>" class="waves-effect"><i class="fa fa-bell fa-fw"
+                                aria-hidden="true"></i> Chatbot Notification</a>
                     </li>
                 </ul>
             </div>

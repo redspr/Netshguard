@@ -1,7 +1,5 @@
-<?php
-	include './view/head.html';
-	include './view/sidebar.html';
-?>
+<?= $this->extend('dashboard/template'); ?>
+<?= $this->section('content'); ?>
 <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
@@ -41,28 +39,32 @@
                                             <td>181.122.10.119</td>
                                             <td>08/01/2021 11:00</td>
                                             <td>Jakarta</td>
-                                            <td>Remove</td>
+                                            <td><i class="fa fa-times fa-fw"
+                                aria-hidden="true"></i> Remove</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
                                             <td>210.131.45.55</td>
                                             <td>08/01/2021 11:00</td>
                                             <td>Singapore</td>
-                                            <td>Remove</td>
+                                            <td><i class="fa fa-times fa-fw"
+                                aria-hidden="true"></i> Remove</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
                                             <td>174.188.32.103</td>
                                             <td>08/01/2021 11:00</td>
                                             <td>Russia</td>
-                                            <td>Remove</td>
+                                            <td><i class="fa fa-times fa-fw"
+                                aria-hidden="true"></i> Remove</td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
                                             <td>181.172.111.21</td>
                                             <td>08/01/2021 11:00</td>
                                             <td>Jakarta</td>
-                                            <td>Remove</td>
+                                            <td><i class="fa fa-times fa-fw"
+                                aria-hidden="true"></i> Remove</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -72,7 +74,4 @@
                 </div>
                 <!-- /.row -->
             </div>
-
-<?php
-	include './view/footer.html';
-?>
+            <?= $this->endSection();?>

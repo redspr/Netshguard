@@ -1,7 +1,5 @@
-<?php
-	include './view/head.html';
-	include './view/sidebar.html';
-?>
+<?= $this->extend('dashboard/template'); ?>
+<?= $this->section('content'); ?>
 <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
@@ -45,7 +43,8 @@
                                             <td>' or 1=1#</td>
                                             <td>index.php</td>
                                             <td>07/01/2021 11:47</td>
-                                            <td>See Details</td>
+                                            <td><i class="fa fa-info-circle fa-fw"
+                                aria-hidden="true"></i> See Details</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
@@ -54,7 +53,8 @@
                                             <td>' or 1=1#</td>
                                             <td>index.php</td>
                                             <td>07/01/2021 11:47</td>
-                                            <td>See Details</td>
+                                            <td><i class="fa fa-info-circle fa-fw"
+                                aria-hidden="true"></i> See Details</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
@@ -63,7 +63,8 @@
                                             <td>' or 1=1#</td>
                                             <td>index.php</td>
                                             <td>07/01/2021 11:47</td>
-                                            <td>See Details</td>
+                                            <td><i class="fa fa-info-circle fa-fw"
+                                aria-hidden="true"></i> See Details</td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
@@ -72,7 +73,8 @@
                                             <td>' or 1=1#</td>
                                             <td>index.php</td>
                                             <td>07/01/2021 11:47</td>
-                                            <td>See Details</td>
+                                            <td><i class="fa fa-info-circle fa-fw"
+                                aria-hidden="true"></i> See Details</td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
@@ -81,7 +83,8 @@
                                             <td>' or 1=1#</td>
                                             <td>index.php</td>
                                             <td>07/01/2021 11:47</td>
-                                            <td>See Details</td>
+                                            <td><i class="fa fa-info-circle fa-fw"
+                                aria-hidden="true"></i> See Details</td>
                                         </tr>
                                         <tr>
                                             <td>6</td>
@@ -90,7 +93,8 @@
                                             <td>' or 1=1#</td>
                                             <td>index.php</td>
                                             <td>07/01/2021 11:47</td>
-                                            <td>See Details</td>
+                                            <td><i class="fa fa-info-circle fa-fw"
+                                aria-hidden="true"></i> See Details</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -119,7 +123,4 @@
             </div>
           </div>
             </div>
-        
-<?php
-	include './view/footer.html';
-?>
+            <?= $this->endSection();?>

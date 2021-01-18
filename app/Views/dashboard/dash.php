@@ -14,7 +14,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Suspicious Request</h3>
+                            <h3 class="box-title"><i class="fa fa-rocket fa-fw"
+                                aria-hidden="true"></i> Total Suspicious Request</h3>
                             <ul class="list-inline two-part">
                                 <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">12</span></li>
                             </ul>
@@ -22,7 +23,8 @@
                     </div>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Address Blacklist</h3>
+                            <h3 class="box-title"><i class="fa fa-ban fa-fw"
+                                aria-hidden="true"></i> Total Address Blacklist</h3>
                             <ul class="list-inline two-part">
                                 <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">8</span></li>
                             </ul>
@@ -30,7 +32,8 @@
                     </div>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Chatbot User Registered</h3>
+                            <h3 class="box-title"><i class="fa fa-users fa-fw"
+                                aria-hidden="true"></i> Total Chatbot Users</h3>
                             <ul class="list-inline two-part">
                                 <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">4</span></li>
                             </ul>
@@ -40,7 +43,8 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Last 5 Attack Catched</h3>
+                            <h3 class="box-title"><i class="fa fa-list fa-fw"
+                                aria-hidden="true"></i> Last 5 Attack Catched</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -105,7 +109,8 @@
                         <div class="panel">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        Attack Type Recorded
+                                    <i class="fa fa-pie-chart fa-fw"
+                                aria-hidden="true"></i> Attack Type
                                     </div>
                                     <div class="panel-body">
                                         <div id="attack-type"></div>
@@ -118,7 +123,8 @@
                             <div class="sk-chat-widgets">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        Registered User Chatbot
+                                    <i class="fa fa-users fa-fw"
+                                aria-hidden="true"></i> Registered User Chatbot
                                     </div>
                                     <div class="panel-body">
                                         <ul class="chatonline">
@@ -146,10 +152,11 @@
                             <div class="sk-chat-widgets">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        Website Lockdown Status
+                                    <i class="fa fa-shield fa-fw"
+                                aria-hidden="true"></i> Website Lockdown Status
                                     </div>
                                     <div class="panel-body">
-                                        <h1>Inactive</h1>
+                                        <center><h1>Inactive</h1></center>
                                     </div>
                                 </div>
                             </div>
@@ -160,10 +167,11 @@
                             <div class="sk-chat-widgets">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        Attack Attempt Limit (per IP Address)
+                                    <i class="fa fa-tasks fa-fw"
+                                aria-hidden="true"></i> Attack Attempt Limit (per IP Address)
                                     </div>
                                     <div class="panel-body">
-                                        <h1>5</h1>
+                                        <center><h1>5</h1></center>
                                     </div>
                                 </div>
                             </div>

@@ -1,17 +1,15 @@
-<?php
-	include './view/head.html';
-	include './view/sidebar.html';
-?>
+<?= $this->extend('dashboard/template'); ?>
+<?= $this->section('content'); ?>
 <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Chatbot Notification Setting</h4>
+                        <h4 class="page-title">Chatbot Notification</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
                             <li><a href=".">Dashboard</a></li>
-                            <li class="active">Chatbot Notification Setting</li>
+                            <li class="active">Chatbot Notification</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -39,35 +37,40 @@
                                             <td>Pamoor Spavlski</td>
                                             <td>NG-A34IJKS</td>
                                             <td><input type="radio" id="admin"></td>
-                                            <td>Remove</td>
+                                            <td><i class="fa fa-times fa-fw"
+                                aria-hidden="true"></i> Remove</td>
                                         </tr>
                                         <tr>
                                             <td>afs6923edf2053348cc8dd278476124eb</td>
                                             <td>Pamoor Spavlski</td>
                                             <td>NG-A34IJKS</td>
                                             <td><input type="radio" id="admin"></td>
-                                            <td>Remove</td>
+                                            <td><i class="fa fa-times fa-fw"
+                                aria-hidden="true"></i> Remove</td>
                                         </tr>
                                         <tr>
                                             <td>afs6923edf2053348cc8dd278476124eb</td>
                                             <td>Pamoor Spavlski</td>
                                             <td>NG-A34IJKS</td>
                                             <td><input type="radio" id="admin" checked></td>
-                                            <td>Remove</td>
+                                            <td><i class="fa fa-times fa-fw"
+                                aria-hidden="true"></i> Remove</td>
                                         </tr>
                                         <tr>
                                             <td>afs6923edf2053348cc8dd278476124eb</td>
                                             <td>Pamoor Spavlski</td>
                                             <td>NG-A34IJKS</td>
                                             <td><input type="radio" id="admin"></td>
-                                            <td>Remove</td>
+                                            <td><i class="fa fa-times fa-fw"
+                                aria-hidden="true"></i> Remove</td>
                                         </tr>
                                         <tr>
                                             <td>afs6923edf2053348cc8dd278476124eb</td>
                                             <td>Pamoor Spavlski</td>
                                             <td>NG-A34IJKS</td>
                                             <td><input type="radio" id="admin" ></td>
-                                            <td>Remove</td>
+                                            <td><i class="fa fa-times fa-fw"
+                                aria-hidden="true"></i> Remove</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -77,7 +80,4 @@
                 </div>
                 <!-- /.row -->
             </div>
-
-<?php
-	include './view/footer.html';
-?>
+            <?= $this->endSection();?>

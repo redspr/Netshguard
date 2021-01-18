@@ -1,7 +1,5 @@
-<?php
-	include './view/head.html';
-	include './view/sidebar.html';
-?>
+<?= $this->extend('dashboard/template'); ?>
+<?= $this->section('content'); ?>
 <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
@@ -50,7 +48,4 @@
                 </div>
                 <!-- /.row -->
             </div>
-
-<?php
-	include './view/footer.html';
-?>
+<?= $this->endSection();?>
