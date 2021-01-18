@@ -2,7 +2,7 @@
      "use strict";
      // toat popup js
      $.toast({ 
-  text : "<center><font size='4'> Loading Data...</font>", 
+  text : "<font size='4'> Loading Data...</font>", 
   showHideTransition : 'slide',  // It can be plain, fade or slide
   bgColor : 'white',              // Background color for toast
   textColor : 'black',            // text color
@@ -13,16 +13,30 @@
   position : 'mid-center'       // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values to position the toast on page
 })
 
-new Chartist.Pie('#attack-type', {
-    labels: ['SQL', 'RCE', 'XSS'],
-    series: [20, 30, 40]
-  }, {
-    donut: true,
-    height: '350px',
-    donutSolid: true,
-    startAngle: 270,
-    showLabel: true
-  });
+
+     //ct-visits
+     new Chartist.Line('#ct-visits', {
+         labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'],
+         series: [
+    [5, 2, 7, 4, 5, 3, 5, 4]
+    , [2, 5, 2, 6, 2, 5, 2, 4]
+  ]
+     }, {
+         top: 0,
+         low: 1,
+         showPoint: true,
+         fullWidth: true,
+         plugins: [
+    Chartist.plugins.tooltip()
+  ],
+         axisY: {
+             labelInterpolationFnc: function (value) {
+                 return (value / 1) + 'k';
+             }
+         },
+         showArea: true
+     });
+     // counter
 
 
      var sparklineLogin = function () {
