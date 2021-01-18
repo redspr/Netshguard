@@ -1,57 +1,13 @@
-# CodeIgniter 4 Framework
+# NetshGuard - Web Application Firewall
+![NetshGuard Logo](./nglogo.png?raw=true "NetshGuard")
 
-## What is CodeIgniter?
+## What is NetshGuard?
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible, and secure. 
-More information can be found at the [official site](http://codeigniter.com).
+NetshGuard is a Web Application Firewall which specially designed to work in OSI Layer 7 by intercepting all incoming and outgoing HTTP request to filter possibility of SQL Injection, Remote Code Execution (RCE), Local File Inclusion (LFI) / Remote File Inclusion (RFI) and Cross-site scripting (XSS) attack. We also provide a semi-protection for OSI Layer 7 DDOS by limiting number of TCP connection can be made by an IP Address.
 
-This repository holds the distributable version of the framework,
-including the user guide. It has been built from the 
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Everything is connected to LINE Messenger API to make sure the site owner have a full control to the Web Application Firewall protection, even without touching their PC. We even provide a one-click-total-lock-down solution, so the owner can put the site into maintenance mode just by sending One Time Password (OTP) key to our LINE chatter-bot. 
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
-
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/). 
-
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-The user guide updating and deployment is a bit awkward at the moment, but we are working on it!
-
-## Repository Management
-
-We use Github issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script. 
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Contributing
-
-We welcome contributions from the community.
-
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/contributing.md) section in the development repository.
-
-## Server Requirements
-
-PHP version 7.2 or higher is required, with the following extensions installed: 
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+## Contributor Teams
+- Redspiracy (Yerriell Kristellino)
+- r1singkid (Jeremyah Joel)
+- ChristovalLeaved (Christoval Leaved)
