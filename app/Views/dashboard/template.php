@@ -26,6 +26,7 @@
     <link href="<?php echo base_url().'/Assets/home/css/style.css'; ?>" rel="stylesheet">
     <!-- color CSS -->
     <link href="<?php echo base_url().'/Assets/home/css/colors/default.css'; ?>" id="theme" rel="stylesheet">
+    <script src="<?php echo base_url().'/Assets/home/js/fontawesome.js'; ?>"></script>
 </head>
 
 <body class="fix-header">
@@ -53,10 +54,10 @@
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"><b class="hidden-xs">Hello, Admin</b></a>
+                        <a class="profile-pic" href="#"><b class="hidden-xs">Hello, <?= session()->get('username'); ?></b></a>
                     </li>
                     <li>
-                        <a href="logout" class="waves-effect"><i class="fa fa-sign-out fa-fw"
+                        <a href="<?php echo base_url().'/Auth/logout'; ?>" class="waves-effect"><i class="fa fa-sign-out-alt fa-fw"
                                 aria-hidden="true"></i>Logout</a>
                     </li>
                 </ul>
@@ -75,7 +76,7 @@
                                 aria-hidden="true"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('home/protection'); ?>" class="waves-effect"><i class="fa fa-gear fa-fw"
+                        <a href="<?php echo base_url('home/protection'); ?>" class="waves-effect"><i class="fa fa-cog fa-fw"
                                 aria-hidden="true"></i> Protection Settings</a>
                     </li>
                     <li>
@@ -83,7 +84,7 @@
                                 aria-hidden="true"></i> Blacklist</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('home/logs'); ?>" class="waves-effect"><i class="fa fa-pencil-square fa-fw"
+                        <a href="<?php echo base_url('home/logs'); ?>" class="waves-effect"><i class="fa fa-user-secret fa-fw"
                                 aria-hidden="true"></i> Attack Logs</a>
                     </li>
                     <li>
@@ -121,6 +122,7 @@
         <!-- Custom Theme JavaScript -->
         <script src="<?php echo base_url().'/Assets/home/js/custom.min.js'; ?>"></script>
         <script src="<?php echo base_url().'/Assets/home/js/dashboard1.js'; ?>"></script>
+        <?= $this->renderSection('javascript'); ?>
 </body>
 
 </html>

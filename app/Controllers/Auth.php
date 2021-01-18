@@ -5,7 +5,9 @@ use App\Models\AuthModel;
 class Auth extends BaseController
 {
 	public function login(){
+        
         $model = new AuthModel;
+        
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
         $row = $model->getUserData($username);
@@ -21,14 +23,14 @@ class Auth extends BaseController
                 'level' => $row->level
             );
             session()->set($data);
-            
+            return redirect()->to('/home/dashboard');
         }
+        session()->setFlashdata('pesan','Password Salah');
     }
 
     public function logout(){
         $session = session();
         $session->destroy();
-        session()->setFlashData('msg','Logout');
         return redirect()->to('/login');
     }
 

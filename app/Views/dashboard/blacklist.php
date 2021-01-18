@@ -33,39 +33,8 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>181.122.10.119</td>
-                                            <td>08/01/2021 11:00</td>
-                                            <td>Jakarta</td>
-                                            <td><i class="fa fa-times fa-fw"
-                                aria-hidden="true"></i> Remove</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>210.131.45.55</td>
-                                            <td>08/01/2021 11:00</td>
-                                            <td>Singapore</td>
-                                            <td><i class="fa fa-times fa-fw"
-                                aria-hidden="true"></i> Remove</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>174.188.32.103</td>
-                                            <td>08/01/2021 11:00</td>
-                                            <td>Russia</td>
-                                            <td><i class="fa fa-times fa-fw"
-                                aria-hidden="true"></i> Remove</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>181.172.111.21</td>
-                                            <td>08/01/2021 11:00</td>
-                                            <td>Jakarta</td>
-                                            <td><i class="fa fa-times fa-fw"
-                                aria-hidden="true"></i> Remove</td>
-                                        </tr>
+                                    <tbody id ="listblacklist">
+
                                     </tbody>
                                 </table>
                             </div>
@@ -74,4 +43,60 @@
                 </div>
                 <!-- /.row -->
             </div>
+            <?= $this->endSection();?>
+
+            <?= $this->section('javascript'); ?>
+            <script type="text/javascript">
+                function loaddata()
+                {
+                    $("tbody#listblacklist").empty().append("<tr><td colspan='5' align='center'><i class='fas fa-spinner fa-spin'></i>Loading Data...</td></tr>");
+                    $.ajax({
+                        url:'<?= base_url('/fetch/blacklist')?>',
+                        type:"GET",
+                        dataType:'json',
+                        success:function(data){
+
+                            console.log(data.status);
+                            if(data.status)
+                            {
+                                let list = data.data;
+                                let a =1;
+                                $.each(list,function(i,data){
+                        
+                                    $("tbody#listblacklist").append('<tr><td>'+a+'</td><td>'+data.ip+'</td><td>'+data.c_time+'</td><td>'+data.location+'</td><td><button type="button" id="btn-'+data.id+'" class="btn btn-danger">Remove</button></td></tr>');
+                                    document.getElementById("btn-"+data.id).addEventListener("click", function() {
+                                        $.ajax({
+                                            url:'<?= base_url('/delete')?>',
+                                            type:'POST',
+                                            data:{'id':data.id},
+                                            dataType:'json',
+                                            success:function(ret)
+                                            {
+                                                if(ret.status)
+                                                {
+                                                    loaddata();
+                                                }
+                                            }
+                                        });
+                                    });
+                                    a++;
+
+                                });
+                            }
+                            else
+                            {
+                                $("tbody#listblacklist").empty().append('<tr><td colspan="5" align="center">'+data.msg+'</td></tr>');
+                            }
+                            
+                        }
+                        
+                        });
+                }
+
+
+                $(document).ready(function() {
+                    loaddata();
+                    
+                });
+                            </script>
             <?= $this->endSection();?>

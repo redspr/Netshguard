@@ -109,7 +109,7 @@
                         <div class="panel">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                    <i class="fa fa-pie-chart fa-fw"
+                                    <i class="fa fa-chart-pie fa-fw"
                                 aria-hidden="true"></i> Attack Type
                                     </div>
                                     <div class="panel-body">
@@ -152,7 +152,7 @@
                             <div class="sk-chat-widgets">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                    <i class="fa fa-shield fa-fw"
+                                    <i class="fa fa-shield-alt fa-fw"
                                 aria-hidden="true"></i> Website Lockdown Status
                                     </div>
                                     <div class="panel-body">

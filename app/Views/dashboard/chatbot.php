@@ -15,11 +15,13 @@
                     <!-- /.col-lg-12 -->
                 </div>
 
-                <!-- /row -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">User List</h3>
+                <div class="white-box">
+                    <div class="row">
+                        <div class="col-sm-10"><h3 class="box-title">User List</h3></div>
+                        <div class="col-sm-2"><button type="button" class="btn btn-success">Generate Token</button></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -37,40 +39,7 @@
                                             <td>Pamoor Spavlski</td>
                                             <td>NG-A34IJKS</td>
                                             <td><input type="radio" id="admin"></td>
-                                            <td><i class="fa fa-times fa-fw"
-                                aria-hidden="true"></i> Remove</td>
-                                        </tr>
-                                        <tr>
-                                            <td>afs6923edf2053348cc8dd278476124eb</td>
-                                            <td>Pamoor Spavlski</td>
-                                            <td>NG-A34IJKS</td>
-                                            <td><input type="radio" id="admin"></td>
-                                            <td><i class="fa fa-times fa-fw"
-                                aria-hidden="true"></i> Remove</td>
-                                        </tr>
-                                        <tr>
-                                            <td>afs6923edf2053348cc8dd278476124eb</td>
-                                            <td>Pamoor Spavlski</td>
-                                            <td>NG-A34IJKS</td>
-                                            <td><input type="radio" id="admin" checked></td>
-                                            <td><i class="fa fa-times fa-fw"
-                                aria-hidden="true"></i> Remove</td>
-                                        </tr>
-                                        <tr>
-                                            <td>afs6923edf2053348cc8dd278476124eb</td>
-                                            <td>Pamoor Spavlski</td>
-                                            <td>NG-A34IJKS</td>
-                                            <td><input type="radio" id="admin"></td>
-                                            <td><i class="fa fa-times fa-fw"
-                                aria-hidden="true"></i> Remove</td>
-                                        </tr>
-                                        <tr>
-                                            <td>afs6923edf2053348cc8dd278476124eb</td>
-                                            <td>Pamoor Spavlski</td>
-                                            <td>NG-A34IJKS</td>
-                                            <td><input type="radio" id="admin" ></td>
-                                            <td><i class="fa fa-times fa-fw"
-                                aria-hidden="true"></i> Remove</td>
+                                            <td><i class="fa fa-times fa-fw" aria-hidden="true"></i> Remove</td>
                                         </tr>
                                     </tbody>
                                 </table>

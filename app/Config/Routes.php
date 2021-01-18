@@ -30,8 +30,13 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->add('/login', 'Login::index');
+$routes->add('/login', 'Login::login');
+$routes->add('/', 'Login::index');
 $routes->add('home/dashboard', 'Home::index');
+$routes->add('fetch/(:segment)', 'FetchController::fetch/$1');
+$routes->add('delete', 'FetchController::remove');
+$routes->add('fetchip', 'FetchController::fetchip');
+$routes->add('generatetoken', 'FetchController::generatetoken');
 
 /**
  * --------------------------------------------------------------------

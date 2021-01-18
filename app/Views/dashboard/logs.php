@@ -35,7 +35,7 @@
                                             <th>Details</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id ="listlogs">
                                         <tr>
                                             <td>1</td>
                                             <td>SQL Injection (SQLi)</td>
@@ -123,4 +123,78 @@
             </div>
           </div>
             </div>
+            <?= $this->endSection();?>
+            <?= $this->section('javascript'); ?>
+            <script type="text/javascript">
+                function loaddata()
+                {
+                    $("tbody#listlogs").empty().append("<tr><td colspan='7' align='center'><i class='fas fa-spinner fa-spin'></i>Loading Data...</td></tr>");
+                    $.ajax({
+                        url:'<?= base_url('/fetch/attacklogs')?>',
+                        type:"GET",
+                        dataType:'json',
+                        success:function(data){
+                            $("tbody#listlogs").empty();
+  
+                            if(data.status)
+                            {
+                                let list = data.data;
+                                let a =1;
+                                $.each(list,function(i,data){
+                        
+                                    $("tbody#listlogs").append('<tr><td>'+a+'</td><td>'+data.attack_type+'</td><td>'+data.ip+'</td><td>'+data.payload+'</td><td>'+data.path+'</td><td>'+data.created_at+'</td><td><button type="button" id="btn-'+data.ip+'" class="btn btn-secondary">See Details</button></td></tr>');
+                                    document.getElementById("btn-"+data.ip).addEventListener("click", function() {
+                                        checkIP(data.ip);
+                                    });
+                                    a++;
+
+                                });
+                            }
+                            else
+                            {
+                                $("tbody#listlogs").empty().append('<tr><td colspan="7" align="center">'+data.msg+'</td></tr>');
+                            }
+                            
+                        }
+                        
+                        });
+                }
+                function checkIP(x)
+                {
+                        $.ajax({
+                        url:'<?= base_url('/fetchip')?>',
+                        type:"POST",
+                        dataType:'json',
+                        data:{"ip":x},
+                        success:function(data){
+                            if(data.status)
+                            {
+                                let x = data.data;
+                                $("div#IP").empty().append('ISP:'+x.ISP);
+                                $("div#CITY").empty().append('City:'+x.city);
+                                $("div#REGION").empty().append('Region:'+x.region);
+                                $("div#COUNTRY").empty().append('Country:'+x.country);
+                                $("div#TIMEZONE").empty().append('Timezone:'+x.timezone);
+                                $('#newModal').modal('show'); 
+                            }
+                            else
+                            {
+                                $("div#IP").empty().append('ERROR: '+data.error);
+                                $("div#CITY").empty();
+                                $("div#REGION").empty();
+                                $("div#COUNTRY").empty();
+                                $("div#TIMEZONE").empty();
+                                $("#newModal").modal("show");
+                            }
+                            
+                        }
+                        
+                        });
+                }
+
+                $(document).ready(function() {
+                    loaddata();
+                    
+                });
+                            </script>
             <?= $this->endSection();?>
