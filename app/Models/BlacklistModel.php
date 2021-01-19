@@ -7,7 +7,8 @@ class BlacklistModel extends Model
     protected $table = 'blacklist';
     protected $primaryKey = 'id';
 
-    protected $allowedFields = ['active'];
+    protected $allowedFields = ['active','uid','aid','ip','location'];
+
 
     protected $useTimestamps = true;
     protected $createdField = 'c_time';

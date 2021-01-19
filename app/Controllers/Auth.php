@@ -20,6 +20,7 @@ class Auth extends BaseController
             $data = array(
                 'log' =>TRUE,
                 'username' => $row->username,
+                'uid' => $row->id,
                 'level' => $row->level
             );
             session()->set($data);

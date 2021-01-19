@@ -34,9 +34,13 @@ $routes->add('/login', 'Login::login');
 $routes->add('/', 'Login::index');
 $routes->add('home/dashboard', 'Home::index');
 $routes->add('fetch/(:segment)', 'FetchController::fetch/$1');
-$routes->add('delete', 'FetchController::remove');
+$routes->add('delete/(:segment)', 'RemoveController::remove/$1');
 $routes->add('fetchip', 'FetchController::fetchip');
-$routes->add('generatetoken', 'FetchController::generatetoken');
+$routes->add('generatetoken', 'ChatBotController::generatetoken');
+$routes->add('chatbot/setadmin', 'ChatBotController::setadmin');
+$routes->add('apibot/checklockdown', 'ChatBotController::checklockdown');
+$routes->add('apibot/addblacklist', 'ChatBotController::addblacklist');
+
 
 /**
  * --------------------------------------------------------------------

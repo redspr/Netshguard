@@ -14,16 +14,7 @@
 // })
 
 
-new Chartist.Pie('#attack-type', {
-    labels: ['SQL', 'RCE', 'XSS'],
-    series: [20, 30, 40]
-  }, {
-    donut: true,
-    height: '350px',
-    donutSolid: true,
-    startAngle: 270,
-    showLabel: true
-  });
+
 
 
      var sparklineLogin = function () {

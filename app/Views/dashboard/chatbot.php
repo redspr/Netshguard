@@ -14,11 +14,14 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-
+                <div id="errormessage">
+                
+                </div>
+                
                 <div class="white-box">
                     <div class="row">
                         <div class="col-sm-10"><h3 class="box-title">User List</h3></div>
-                        <div class="col-sm-2"><button type="button" class="btn btn-success">Generate Token</button></div>
+                        <div class="col-sm-2"><button type="button" id= "gtoken" onclick="generateToken();" class="btn btn-success">Generate Token</button></div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
@@ -33,7 +36,7 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="listbot">
                                         <tr>
                                             <td>afs6923edf2053348cc8dd278476124eb</td>
                                             <td>Pamoor Spavlski</td>
@@ -49,4 +52,107 @@
                 </div>
                 <!-- /.row -->
             </div>
+            <?= $this->endSection();?>
+            <?= $this->section('javascript'); ?>
+            <script type="text/javascript">
+                function loaddata()
+                {
+                    $("#errormessage").empty();
+                    $("#gtoken").attr("disabled", true);
+                    $("tbody#listbot").empty().append("<tr><td colspan='5' align='center'><i class='fas fa-spinner fa-spin'></i>Loading Data...</td></tr>");
+                    $.ajax({
+                        url:'<?= base_url('/fetch/chatbot')?>',
+                        type:"GET",
+                        dataType:'json',
+                        success:function(data){
+                            $("tbody#listbot").empty();
+
+                            if(data.status)
+                            {
+                                let list = data.data;
+                                $.each(list,function(i,data){
+                                    var adminbtn = "";
+
+                                    if (data.admin == 1)
+                                    {
+                                        adminbtn = '<td><i class="fas fa-circle fa-fw" aria-hidden="true"></i> Admin</td>';
+                                    }
+                                    else
+                                    {
+                                        adminbtn = '<td><i class="far fa-circle fa-fw" aria-hidden="true"></i> Not Admin</td>'; 
+                                    }
+                                    $("tbody#listbot").append('<tr><td>'+data.uid+'</td><td>'+data.name+'</td><td>'+data.token+'</td>'+adminbtn+'<td><button type="button" class="btn btn-danger" id="remove-'+data.id+'">Remove</button> <button type="button" class="btn btn-success" id="admin-'+data.id+'">Admin</button></td></tr>');
+                                    document.getElementById("remove-"+data.id).addEventListener("click", function() {
+                                        $.ajax({
+                                            url:'<?= base_url('/delete/chatbot')?>',
+                                            type:'POST',
+                                            data:{'id':data.id},
+                                            dataType:'json',
+                                            success:function(ret)
+                                            {
+                                                if(ret.status)
+                                                {
+                                                    loaddata();
+                                                }
+                                                else
+                                                {
+                                                    $("#errormessage").empty().append('<div class="alert alert-danger" role="alert">You can\'t remove admin!</div>');
+                                                    
+                                                }
+                                            }
+                                        });
+                                    });
+                                    document.getElementById("admin-"+data.id).addEventListener("click", function() {
+                                        $.ajax({
+                                            url:'<?= base_url('/chatbot/setadmin')?>',
+                                            type:'POST',
+                                            data:{'id':data.id},
+                                            dataType:'json',
+                                            success:function(ret)
+                                            {
+                                                if(ret.status)
+                                                {
+                                                    loaddata();
+                                                }
+                                                
+                                            }
+                                        });
+                                    });
+
+                                });
+                                
+                            }
+                            else
+                            {
+                                $("tbody#listbot").empty().append('<tr><td colspan="5" align="center">'+data.msg+'</td></tr>');
+                            }
+                            $("#gtoken").attr("disabled", false);
+                        }
+                        
+                        });
+                }
+                function generateToken(){
+                    $("#gtoken").attr("disabled", true);
+                    $.ajax({
+                        url:'<?= base_url('/generatetoken')?>',
+                        type:"GET",
+                        dataType:'json',
+                        success:function(data){
+                            if(data.status)
+                            {
+                                
+                                loaddata();
+                            }
+
+                            
+                        }
+                        
+                    });
+                }
+
+                $(document).ready(function() {
+                    loaddata();
+                    
+                });
+                            </script>
             <?= $this->endSection();?>

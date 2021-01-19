@@ -17,9 +17,9 @@ class Filters extends BaseConfig
 	// Always applied before every request
 	public $globals = [
 		'before' => [
-			'beforeLogin' => ['except' => ['login','auth/*']],
-			'afterLogin' => ['except' => ['home/*','fetch/*','delete','auth/logout','fetchip','generatetoken']],
-			'csrf' => ['except' => ['delete','fetchip','generatetoken']]
+			'beforeLogin' => ['except' => ['login','auth/*','apibot/*']],
+			'afterLogin' => ['except' => ['home/*','fetch/*','delete/*','auth/logout','fetchip','generatetoken','chatbot/setadmin']],
+			'csrf' => ['except' => ['delete/*','fetchip','generatetoken','chatbot/setadmin','apibot/*']]
 		],
 		'after'  => [
 			'toolbar',

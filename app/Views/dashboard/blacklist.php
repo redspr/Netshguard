@@ -55,8 +55,7 @@
                         type:"GET",
                         dataType:'json',
                         success:function(data){
-
-                            console.log(data.status);
+                            $("tbody#listblacklist").empty();
                             if(data.status)
                             {
                                 let list = data.data;
