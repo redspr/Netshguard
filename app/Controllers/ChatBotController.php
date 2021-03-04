@@ -10,19 +10,16 @@ class ChatBotController extends BaseController
 {
     function checkDirect()
     {
+
         if (empty($_SERVER["HTTP_X_REQUESTED_WITH"])) 
         {
             $output = array("status"=>false,"msg"=>"Direct Access is not permitted!");
             die(json_encode($output));
-            if($_SERVER["HTTP_X_REQUESTED_WITH"] != "XMLHttpRequest")
-            {
-                $output = array("status"=>false,"msg"=>"Direct Access is not permitted!");
-                die(json_encode($output));
-                if (realpath($_SERVER["SCRIPT_FILENAME"]) == __FILE__) { // direct access denied
-                    $output = array("status"=>false,"msg"=>"Direct Access is not permitted!");
-                    die(json_encode($output));
-                }
-            }  
+        }
+        if($_SERVER["HTTP_X_REQUESTED_WITH"] !== "XMLHttpRequest")
+        {
+            $output = array("status"=>false,"msg"=>"Direct Access is not permitted!");
+            die(json_encode($output));
         }
     }
     public function generatetoken()
@@ -69,7 +66,7 @@ class ChatBotController extends BaseController
         $ChatBot = new ChatBotModel;
         if($bid !== null && $bid !== "-")
         {
-            $req = $ChatBot->where('bid',$bid)->first();
+            $req = $ChatBot->where(['bid'=>$bid,'active'=>1])->first();
             if($req !== null )
             {
                 if ($admin === true)
@@ -89,6 +86,26 @@ class ChatBotController extends BaseController
                     return $req['uid'];
                 }
                 
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+    function checkadmin($bid)
+    {
+        $ChatBot = new ChatBotModel;
+        if($bid !== null && $bid !== "-")
+        {
+            $req = $ChatBot->where('bid',$bid)->first();
+            if($req !== null )
+            {
+               return $req['admin'];
             }
             else
             {
@@ -144,7 +161,111 @@ class ChatBotController extends BaseController
         }
         echo json_encode($msg);
     }
-    
+    public function checkLogs()
+    {
+        $this->checkDirect();
+        $UsersModel = new UsersModel;
+        $AttackLogsModel = new AttackLogsModel;
+        $uid = $this->request->getPost('uid');
+        $cid = $this->checkOwner($uid,false);
+        if($cid !== null)
+        {
+            $req = $AttackLogsModel->where(['cid'=>$cid,'active'=>1])->orderBy('id', 'desc')->findAll(10);
+            $newdata = array();
+            foreach($req as $x)
+            {
+                $newdata[] = array('ip'=>$x['ip'],'type'=>$x['attack_type'],'attempt_date'=>$x['created_at'],"payload"=>$x['payload']);
+            
+            }
+            $msg = array("status"=>true,"data"=>$newdata);
+
+        }
+        else
+        {
+            $msg = array("status"=>false);
+        }
+        echo json_encode($msg);
+    }
+    public function checkBlacklist()
+    {
+        $this->checkDirect();
+        $UsersModel = new UsersModel;
+        $BlacklistModel = new BlacklistModel;
+        $uid = $this->request->getPost('uid');
+
+        $cid = $this->checkOwner($uid,false);
+        if($cid !== null)
+        {
+            $req = $BlacklistModel->where(['aid'=>$cid,'active'=>1])->orderBy('id', 'desc')->findAll(10);
+            $newdata = array();
+            foreach($req as $x)
+            {
+                $newdata[] = array('ip'=>$x['ip'],'location'=>$x['location'],'attempt_time'=>$x['c_time']);
+            
+            }
+            $msg = array("status"=>true,"data"=>$newdata);
+
+        }
+        else
+        {
+            $msg = array("status"=>false);
+        }
+        echo json_encode($msg);
+    }
+    public function checkuid()
+    {
+        $this->checkDirect();
+        $data = $this->request->getPost('uid');
+        $check = $this->checkOwner($data,false);
+        $UsersModel = new UsersModel;
+        $ChatBot = new ChatBotModel;
+        if ($check !== null)
+        {
+            $uid = $ChatBot->where('bid',$data)->first();
+            $id = $uid['uid'];
+            $lock = $UsersModel->where('id',$id)->first();
+            $admin = $this->checkOwner($data,true);
+
+            if ($admin === null)
+            {
+                $admin = 0;
+            }
+            else
+            {
+                $admin = 1;
+            }
+            $msg = array("status"=>true,"lockdown"=>$lock['lockdown'],"admin"=>$admin);
+        }
+        else
+        {
+            $msg = array("status"=>false);
+        }
+        echo json_encode($msg);
+    }
+    public function checktoken()
+    {
+        $this->checkDirect();
+        $token = $this->request->getPost('token');
+        $name = $this->request->getPost('name');
+        $uid = $this->request->getPost('uid');
+
+        $ChatBot = new ChatBotModel;
+        $check = $ChatBot->where(['token'=>$token,'active'=>1,'bid'=>'-'])->first();
+        if ($check !== null)
+        {
+            $ChatBot->save([
+                'id'=> $check['id'],
+                'bid'=>$uid,
+                'name'=>$name
+            ]);
+            $msg = array("status"=>true);
+        }
+        else
+        {
+            $msg = array("status"=>false);
+        }
+        echo json_encode($msg);
+    }
     public function addblacklist()
     {
         $this->checkDirect();

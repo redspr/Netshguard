@@ -26,7 +26,9 @@ class Auth extends BaseController
             session()->set($data);
             return redirect()->to('/home/dashboard');
         }
-        session()->setFlashdata('pesan','Password Salah');
+        
+        session()->setFlashdata('msg','Password Salah');
+        return redirect()->to('/login');
     }
 
     public function logout(){

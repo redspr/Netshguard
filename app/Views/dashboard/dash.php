@@ -152,7 +152,7 @@
                     $("#lockdown").empty().append('<i class="fas fa-spinner fa-spin"></i>');
                     $("#attempt").empty().append('<i class="fas fa-spinner fa-spin"></i>');
                     $("#chatonline").empty().append('<i class="fas fa-spinner fa-spin"></i> Fetch Data');
-                    $("#attack-type").empty().append('<i class="fas fa-spinner fa-spin"></i> Fetch Data');
+                    // $("#attack-type").empty().append('<i class="fas fa-spinner fa-spin"></i> Fetch Data');   
                     $("#last5").empty().append("<tr><td colspan='5' align='center'><i class='fas fa-spinner fa-spin'></i>Loading Data...</td></tr>");
                     $.ajax({
                         url:'<?= base_url('/fetch/dashboard')?>',
@@ -206,8 +206,10 @@
                                     });
                                 }
                                 new Chartist.Pie('#attack-type', {
-                                    labels: ['SQL', 'RCE', 'XSS'],
-                                    series: [20, 30, 40]
+                                    // labels: ['SQL', 'RCE', 'XSS'],
+                                    // series: [10, 0, 0]
+                                    labels: ['SQL'],
+                                    series: [10]
                                 }, {
                                     donut: true,
                                     height: '350px',

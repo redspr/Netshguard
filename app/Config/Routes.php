@@ -40,7 +40,11 @@ $routes->add('generatetoken', 'ChatBotController::generatetoken');
 $routes->add('chatbot/setadmin', 'ChatBotController::setadmin');
 $routes->add('apibot/checklockdown', 'ChatBotController::checklockdown');
 $routes->add('apibot/addblacklist', 'ChatBotController::addblacklist');
-
+$routes->add('apibot/checkuid', 'ChatBotController::checkuid');
+$routes->add('apibot/checkalogs', 'ChatBotController::checkLogs');
+$routes->add('apibot/checkblacklist', 'ChatBotController::checkBlacklist');
+$routes->add('apibot/checktoken', 'ChatBotController::checktoken');
+$routes->add('api/getData', 'DataController::getData');
 
 /**
  * --------------------------------------------------------------------

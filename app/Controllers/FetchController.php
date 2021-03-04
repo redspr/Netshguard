@@ -23,19 +23,16 @@ class FetchController extends BaseController
     }
     function checkDirect()
     {
+
         if (empty($_SERVER["HTTP_X_REQUESTED_WITH"])) 
         {
             $output = array("status"=>false,"msg"=>"Direct Access is not permitted!");
             die(json_encode($output));
-            if($_SERVER["HTTP_X_REQUESTED_WITH"] != "XMLHttpRequest")
-            {
-                $output = array("status"=>false,"msg"=>"Direct Access is not permitted!");
-                die(json_encode($output));
-                if (realpath($_SERVER["SCRIPT_FILENAME"]) == __FILE__) { // direct access denied
-                    $output = array("status"=>false,"msg"=>"Direct Access is not permitted!");
-                    die(json_encode($output));
-                }
-            }  
+        }
+        if($_SERVER["HTTP_X_REQUESTED_WITH"] !== "XMLHttpRequest")
+        {
+            $output = array("status"=>false,"msg"=>"Direct Access is not permitted!");
+            die(json_encode($output));
         }
     }
 	public function blacklist()
