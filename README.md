@@ -8,6 +8,6 @@ NetshGuard is a Web Application Firewall which specially designed to work in OSI
 Everything is connected to LINE Messenger API to make sure the site owner have a full control to the Web Application Firewall protection, even without touching their PC. We even provide a one-click-total-lock-down solution, so the owner can put the site into maintenance mode just by sending One Time Password (OTP) key to our LINE chatter-bot. 
 
 ## Contributor Teams
-- Redspiracy (Yerriell Kristellino)
+- redspr (Yerriell Kristellino)
 - r1singkid (Jeremyah Joel)
 - ChristovalLeaved (Christoval Leaved)
